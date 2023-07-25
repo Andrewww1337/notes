@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+
+import { useAppDispatch, useAppSelector } from "../src/redux/hooks";
+
+import { Header } from "./components/header";
+import { Filter } from "./components/filter";
+import { NoteCreator } from "./components/noteCreator";
+import { Note } from "./components/note";
+
+import { getNote } from "./features/notes";
+
+import "./App.css";
 
 function App() {
+  const dispatch = useAppDispatch();
+  const [filterByTags, setFilterByTags] = useState<string[]>([]);
+  const notes = useAppSelector((state) => state.notes.content);
+  const notesTags = notes.filter((x) =>
+    x.Tags.some((t) => filterByTags.includes(t))
+  );
+
+  useEffect(() => {
+    dispatch(getNote());
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Filter filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
+      <NoteCreator />
+      {notesTags &&
+        notesTags?.map((item) => <Note key={item.Id} item={item} />)}
+      {notesTags.length < 1 &&
+        notes?.map((item) => <Note key={item.Id} item={item} />)}
     </div>
   );
 }

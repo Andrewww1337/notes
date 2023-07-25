@@ -1,0 +1,22 @@
+.noteCreator {
+  padding: 20px;
+  background-color: rgb(224, 244, 255);
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+.noteCreatorButtonPanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.noteCreatorTagsPanel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.mantine-InputWrapper-label {
+  color: rgb(130, 131, 131);
+  margin-bottom: 10px;
+}

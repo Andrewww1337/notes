@@ -1,0 +1,27 @@
+.note {
+  background-color: rgb(224, 244, 255);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 30px;
+}
+.noteButtonsPanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.noteText {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+.noteTagsPanel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.noteTextArea {
+  margin-bottom: 31px;
+}
